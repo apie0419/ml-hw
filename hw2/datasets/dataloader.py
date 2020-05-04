@@ -6,15 +6,15 @@ from torch.utils.data.sampler import SubsetRandomSampler
 import numpy as np
 import os
 
-np.random.seed(10)
+np.random.seed(11)
 
 def make_train_loader(cfg):
     
     num_workers = cfg.DATA.NUM_WORKERS
     batch_size  = cfg.DATA.TRAIN_BATCH_SIZE
+    valid_size  = cfg.DATA.VALIDATION_SIZE
     train_path  = cfg.PATH.TRAIN_SET
-    valid_size  = 0.2
-
+    
     transforms = build_transform(cfg)
 
     trainset = datasets.ImageFolder(train_path, transform=transforms)

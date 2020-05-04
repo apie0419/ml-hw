@@ -3,14 +3,17 @@ from config      import cfg
 from datasets    import make_train_loader
 
 import torch, os
+import numpy as np
 
 model = cnn_model()
 
+valid_size  = cfg.DATA.VALIDATION_SIZE
+epochs      = cfg.MODEL.EPOCH
+lr          = cfg.MODEL.LR
 weight_path = cfg.MODEL.OUTPUT_PATH
 use_cuda    = cfg.DEVICE.CUDA
 gpu_id      = cfg.DEVICE.GPU
-epochs      = cfg.MODEL.EPOCH
-lr          = cfg.MODEL.LR
+
 
 if use_cuda:
     torch.cuda.set_device(gpu_id)
@@ -44,8 +47,8 @@ for epoch in range(1, epochs+1):
         loss = torch.nn.functional.cross_entropy(output, target)
         valid_loss += loss.item() * data.size(0)
 
-    train_loss = train_loss/len(train_loader.dataset)
-    valid_loss = valid_loss/len(valid_loader.dataset)
+    train_loss /= int(np.floor(len(train_loader.dataset) * (1 - valid_size)))
+    valid_loss /= int(np.floor(len(valid_loader.dataset) * valid_size))
     print('Epoch: {}, Training Loss: {:.4f}, Validation Loss: {:.4f}'.format(epoch, train_loss, valid_loss))
 
 output_dir = "/".join(weight_path.split("/")[:-1])

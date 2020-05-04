@@ -31,5 +31,6 @@ _C.DATA.RESIZE = [224, 224] # picture size after resizing
 _C.DATA.NUM_WORKERS = 8 # use how many processors
 _C.DATA.TRAIN_BATCH_SIZE = 32 # <train_batch_size>
 _C.DATA.TEST_BATCH_SIZE = 16 # <test_batch_size>
+_C.DATA.VALIDATION_SIZE = 0.2
 
 _C.merge_from_file(os.path.join(BASE_PATH, "config.yml"))
