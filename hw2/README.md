@@ -2,8 +2,6 @@
 
 Download Data From: [link](https://www.kaggle.com/pocahontas1010/dogs-vs-cats-for-pytorch/download)
 
-Extract it and put it in the root directory.
-
 ## Environment Installation
 
 ```
