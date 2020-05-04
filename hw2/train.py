@@ -33,7 +33,7 @@ for epoch in range(1, epochs+1):
         loss = torch.nn.functional.cross_entropy(output, target)
         loss.backward()
         optimizer.step()
-        train_loss += loss.item()*data.size(0)
+        train_loss += loss.item() * data.size(0)
 
     model.eval()
     for data, target in valid_loader:
@@ -42,12 +42,11 @@ for epoch in range(1, epochs+1):
             
         output = model(data)
         loss = torch.nn.functional.cross_entropy(output, target)
-        valid_loss += loss.item()*data.size(0)
+        valid_loss += loss.item() * data.size(0)
 
     train_loss = train_loss/len(train_loader.dataset)
     valid_loss = valid_loss/len(valid_loader.dataset)
     print('Epoch: {}, Training Loss: {:.4f}, Validation Loss: {:.4f}'.format(epoch, train_loss, valid_loss))
-
 
 output_dir = "/".join(weight_path.split("/")[:-1])
 if not os.path.exists(output_dir):

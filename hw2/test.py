@@ -23,22 +23,19 @@ test_loader = make_test_loader(cfg)
 model.eval()
 
 test_loss = 0.
-correct = 0.
-total = 0.
+correct = 0
 
 with torch.no_grad():
-    for batch_idx, (data, target) in enumerate(test_loader):
+    for data, target in test_loader:
         if use_cuda:
             data, target = data.cuda(), target.cuda()
 
         output = model(data)
         loss = torch.nn.functional.cross_entropy(output, target)
-        test_loss = test_loss + ((1 / (batch_idx + 1)) * (loss.data - test_loss))
+        test_loss += loss.item() * data.size(0)
+        correct += (output.max(1)[1] == target).sum()
+        
+    test_loss /= len(test_loader.dataset)
+    accuracy = 100. * correct / len(test_loader.dataset)
 
-        pred = output.data.max(1, keepdim=True)[1]
-        correct += np.sum(np.squeeze(pred.eq(target.data.view_as(pred))).cpu().numpy())
-        total += data.size(0)
-
-    print('Test Loss: {:.6f}'.format(test_loss))
-
-    print('Test Accuracy: %2d%% (%2d/%2d)' % (100. * correct / total, correct, total))
+    print('Test Loss: {:.6f}, Test Accuracy: {:.2f}% ({}/{})'.format(test_loss, accuracy, correct, len(test_loader.dataset)))
