@@ -1,5 +1,5 @@
 MODEL:
-  OUTPUT_PATH: "/home/apie/projects/ml_hw2/weights/model.pth"
+  OUTPUT_PATH: "/home/apie/projects/ml_hw/hw2/weights/model.pth"
   LR: 0.001
   EPOCH: 1
 
@@ -12,8 +12,8 @@ DATA:
   NUM_WORKERS: 4
 
 PATH:
-  TRAIN_SET: "/home/apie/projects/ml_hw2/Cat_Dog_data/train"
-  TEST_SET: "/home/apie/projects/ml_hw2/Cat_Dog_data/test"
+  TRAIN_SET: "/home/apie/projects/ml_hw/hw1/Cat_Dog_data/train"
+  TEST_SET: "/home/apie/projects/ml_hw/hw2/Cat_Dog_data/test"
 
 DEVICE:
   GPU: 1
