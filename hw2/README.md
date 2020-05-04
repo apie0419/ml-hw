@@ -1,4 +1,10 @@
-## Installation
+## Data Preparation
+
+Download Data From: [link](https://www.kaggle.com/pocahontas1010/dogs-vs-cats-for-pytorch/download)
+
+Extract it and put it in the root directory.
+
+## Environment Installation
 
 ```
 conda create -f environment.yml -n <env_name>
@@ -6,6 +12,6 @@ conda create -f environment.yml -n <env_name>
 
 ## Config
 
-you need to modify parameters in config/config.yml
+You need to modify parameters in config/config.yml.
 
-desriptions for every parameters wrote in config/defaults.py
+Desriptions for every parameters wrote in config/defaults.py.
