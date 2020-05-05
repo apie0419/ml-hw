@@ -10,6 +10,36 @@ You can modify some pieces of code on your demand.
 
 Download Data From: [link](https://www.kaggle.com/pocahontas1010/dogs-vs-cats-for-pytorch/download)
 
+## Data Processing
+
+Dataloader was defined in datasets/dataloader.py. It helps you load data.
+In this case, dataset were splitted in 80%/20% for train data and validation data seperately.
+
+We wrote pieces of code to solve this problem.
+
+```python
+trainset = datasets.ImageFolder(train_path, transform=transforms)
+    
+num_train = len(trainset)
+indices = list(range(num_train))
+split = int(np.floor(valid_size * num_train))
+
+np.random.shuffle(indices)
+
+train_idx, valid_idx = indices[split:], indices[:split]
+train_sampler = SubsetRandomSampler(train_idx)
+valid_sampler = SubsetRandomSampler(valid_idx)
+```
+
+If validation and train data are splited already, just do
+
+```python
+trainset = datasets.ImageFolder(train_path, transform=transforms)
+validset = datasets.ImageFolder(valid_path, transform=transforms)
+```
+
+Data preprocessing like Normalization and Resize are wrote in datasets/transforms.py. Wrote your own code for data preprocessing on your demand.
+
 ## Environment Installation
 
 ```
@@ -32,5 +62,7 @@ Desriptions for every parameters were writen in config/defaults.py.
 ## Model
 
 The model structure shows in following picture.
+
+You can edit model/model.py to modify the model.
 
 ![](https://github.com/apie0419/ml-hw/tree/master/hw2/figures/cnn.png)
