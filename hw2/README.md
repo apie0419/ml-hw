@@ -33,4 +33,4 @@ Desriptions for every parameters were writen in config/defaults.py.
 
 The model structure shows in following picture.
 
-![CNN Structure](https://github.com/apie0419/ml-hw/hw2/figures/cnn.png)
+![CNN Structure](https://github.com/apie0419/ml-hw/tree/master/hw2/figures/cnn.png)
