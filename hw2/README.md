@@ -65,4 +65,4 @@ The model structure shows in following picture.
 
 You can edit model/model.py to modify the model.
 
-![](https://github.com/apie0419/ml-hw/tree/master/hw2/figures/cnn.png)
+![](https://github.com/apie0419/ml-hw/blob/master/hw2/figures/cnn.png)
