@@ -48,7 +48,15 @@ Data preprocessing like Normalization and Resize were written in datasets/transf
 ## Environment Installation
 
 ```
-conda create -f environment.yml -n <env_name>
+conda env create -f environment.yml -n <env_name>
+```
+
+**<env_name> must be a new env name**
+
+### Activate Environment
+
+```
+conda activate <env_name>
 ```
 
 ## Config
